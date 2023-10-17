@@ -30,7 +30,7 @@ const FlexContent = ({
               {btn}
             </button>
           </a>
-        </div>
+        </div>{/* Made some changes  */}
         <div className="flex items-center justify-items-center max-w-l relative lg:max-w-none w-full ">
           <img
             src={img}
