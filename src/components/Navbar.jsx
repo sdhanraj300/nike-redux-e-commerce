@@ -5,6 +5,8 @@ import {
 } from "@heroicons/react/24/solid";
 import React, { useEffect } from "react";
 import logo from "../assets/logo.png";
+import { useDispatch } from "react-redux";
+import { setOpenCart } from "../app/CartSlice";
 const Navbar = () => {
   const [navState, setNavState] = React.useState(false);
   const onNavScroll = () => {
@@ -20,6 +22,10 @@ const Navbar = () => {
       window.removeEventListener("scroll", onNavScroll);
     };
   }, []);
+  const dispatch = useDispatch();
+  const onCartToggle = () => {
+    dispatch(setOpenCart({ cartState: true }));
+  };
   return (
     <div>
       <header
@@ -54,6 +60,7 @@ const Navbar = () => {
             </li>
             <li className="grid items-center ">
               <button
+                onClick={onCartToggle}
                 type="button"
                 className="border-none outline-none active:scale-110 transition-all duration-300 relative"
               >
