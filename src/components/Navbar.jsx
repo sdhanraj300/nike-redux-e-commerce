@@ -5,10 +5,11 @@ import {
 } from "@heroicons/react/24/solid";
 import React, { useEffect } from "react";
 import logo from "../assets/logo.png";
-import { useDispatch } from "react-redux";
-import { setOpenCart } from "../app/CartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectTotalQTY, setOpenCart } from "../app/CartSlice";
 const Navbar = () => {
   const [navState, setNavState] = React.useState(false);
+  const totalQTY = useSelector(selectTotalQTY);
   const onNavScroll = () => {
     if (window.scrollY > 30) {
       setNavState(true);
@@ -76,7 +77,7 @@ const Navbar = () => {
                       : "bg-slate-100 text-slate-900 shadow-slate-100"
                   } absolute top-4 right-0 shadow w-4 h-4 text-[0.65rem] leading-tight font-medium rounded-full flex items-center cursor-pointer hover:scale-110 transition-all duration-300 `}
                 >
-                  0
+                  {totalQTY}
                 </div>
               </button>
             </li>

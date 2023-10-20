@@ -3,7 +3,7 @@ import React from "react";
 import { StarIcon, ShoppingBagIcon } from "@heroicons/react/24/solid";
 import { useDispatch } from "react-redux";
 import { set } from "lodash";
-import { setAddItemToCart } from "../../app/CartSlice";
+import { setAddItemToCart, setOpenCart } from "../../app/CartSlice";
 
 const Item = ({
   ifExists,
@@ -21,6 +21,9 @@ const Item = ({
   const onAddToCart = () => {
     const item = { id, title, text, img, color, shadow, price };
     dispatch(setAddItemToCart(item));
+  };
+  const onCartToggle = () => {
+    dispatch(setOpenCart({ cartState: true }));
   };
   return (
     <div>
@@ -55,7 +58,9 @@ const Item = ({
 
           <div className="flex items-center gap-3">
             <button
-              onClick={()=>onAddToCart()}
+              onClick={() => {
+                onAddToCart();
+              }}
               type="button"
               className="bg-white/90 blur-effect-theme button-theme p-0.5 shadow shadow-sky-200"
             >
